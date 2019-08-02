@@ -22,6 +22,7 @@ class UserRepo(object):
                 cursor.execute(query, [email])
                 row = cursor.fetchone()
                 if row is None:
+                    print("this is an error")
                     return None
                 else:
                     user = User()

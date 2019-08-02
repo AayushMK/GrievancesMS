@@ -11,5 +11,5 @@ def main(request):
     context = {}
     if "login_user" in request.session:
         context["login_user"] = request.session["login_user"]
-
+        context["success_msg"] = "Success"
     return HttpResponse(main_html_page.render(context, request))
