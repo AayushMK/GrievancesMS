@@ -1,86 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<link rel="stylesheet" href="../static/Bootstrap/bootstrap.min.css" >
-	<link rel="stylesheet" href="../static/Bootstrap.edit.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	
-	<script>
-		$(document).ready(function() {
+<title></title>
+<link rel="stylesheet" href="../static/Bootstrap/bootstrap.min.css" >
+<link rel="stylesheet" href="../static/js/Bootstrap.edit.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-			$( ".navbar-nav .nav-item" ).on("click", function() {
-				$( ".navbar-nav .nav-item" ).removeClass( "active" );
-				$(this).addClass( "active" );
-			});
+<script>
+$(document).ready(function() {
+
+$( ".navbar-nav .nav-item" ).on("click", function() {
+$( ".navbar-nav .nav-item" ).removeClass( "active" );
+$(this).addClass( "active" );
+});
 
 
-		});
-	</script>
-	
+});
+</script>
+
 </head>
 <body>
 
-	<div class="nav-scroller">
-		{% include "nav.html"%}
-	</div>
+<div class="nav-scroller">
+{% include "nav.html"%}
+</div>
+
+{% if success_msg %}
+<div class="alert alert-success">{{ success_msg }}</div>
+{% endif %}
+
+<div class="container ">
+
+<div class="row mb-2">
+<div class="col-lg-8">
+<ul class="nav nav-tabs mb-3">
+<li class="nav-item">
+	<a class="nav-link active" data-toggle="tab" href="#grievances">Greivances</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" data-toggle="tab" href="#notice">Notice</a>
+</li>
+</ul>
+
+<!-- Tab panes -->
+
+<div class="tab-content">
+<div class="tab-pane container active px-0" id="grievances">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<div class="container">
+{% if msg %}
+{% for g in msg %}
 	
-		{% if success_msg %}
-                <div class="alert alert-success">{{ success_msg }}</div>
-        {% endif %}
-	
-	<div class="container ">
-		
-		<div class="row mb-2">
-			<div class="col-lg-8">
-				<ul class="nav nav-tabs mb-3">
-					<li class="nav-item">
-						<a class="nav-link active" data-toggle="tab" href="#notice">Notice</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#grievances">Grievances</a>
-					</li>
-				</ul>
-
-				<!-- Tab panes -->
-
-				<div class="tab-content">
-					<div class="tab-pane container active px-0" id="notice">
-						<div>
-							<div class="container px-0">
-								<h1>Demo</h1>
-								<h5>Dec 7, 2017</h5>
-
-								<p>Python demo.</p>
-							</div>
-            
+<div>
+<div class="container px-0">
+</div>
 
 
-
-
-						</div>
+              <div class="card">
+                <div class="card-body">
+					<div class="row">
+                  <div class="col-md-2">
+                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
 					</div>
-					<div class="tab-pane container fade" id="grievances">
+                   	<div class="col-md-10">
+                    <p>
+                     <a class="float-left" href="#grievances">
+                      <strong>{{ g.title }}</strong></a>
+                    </p>
+                    <div class="clearfix"></div>
+                    <p>{{ g.body }}</p>
+                    <p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>
+{% endfor %}
+{% endif %}
+</div>
+<div class="tab-pane container fade" id="notice">
+</div>
+</div>
+</div>
+
+<div class="col-lg-4">
+
+ </div>
+</div>
+</div>
+</div>
 
 
 
-					</div>
-					
-				</div>
-			</div>
-
-			<div class="col-lg-4">
-				<div>
-					
-				</div>
-			</div>
-		</div>
-		</div>
-
-
-
-		</body>
-		</html>
+</body>
+</html>

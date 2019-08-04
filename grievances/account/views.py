@@ -28,7 +28,7 @@ def signup(request):
         user_register.cpassword = cpassword
         context["user_register"] = user_register
         if not username or len(str(username).strip(' ')) <= 4:
-            context["error_msg"] = "Invalid full name."
+            context["error_msg"] = "Invalid user name. Should be greater than 4."
         elif not email:
             context["error_msg"] = "Invalid email."
         elif not password or len(str(password).strip(' ')) <= 7:

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GM</title>
+	<link rel="stylesheet" href="../../static/Bootstrap/bootstrap.min.css" >
+	<link rel="stylesheet" href="../../static/js/Bootstrap.edit.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script>
+		$(document).ready(function() {
+
+			$( ".navbar-nav .nav-item" ).on("click", function() {
+				$( ".navbar-nav .nav-item" ).removeClass( "active" );
+				$(this).addClass( "active" );
+			});
+
+
+		});
+	</script>
+	<style type="text/css">
+.nav .nav-item .nav-link{
+	color: grey;
+
+}
+.nav .nav-item .active{
+	color: black;
+
+}
+.blog-header {
+  line-height: 1;
+  border-bottom: 1px solid #e5e5e5;
+}
+	</style>
+	
+</head>
+<body>
+<div class="nav-scroller">
+		{% include "nav.html" %}
+</div>
+{% if success_msg %}
+	<div>
+	{{success_msg}}
+	</div>
+{% endif %}
+{% if title %}
+	<div>
+	{{title}}
+	</div>
+{% endif %}
+{% if body %}
+	<div>
+	{{body}}
+	</div>
+{% endif %}
+{% if time %}
+	<div>
+	{{time}}
+	</div>
+{% endif %}
+
+<div class="card">
+	<div class="card-body">
+		<form method="post" enctype="application/x-www-form-urlencoded" action="/post_grievances/submit/" class="align-content-center">
+			{% csrf_token %}
+			<div class="form-group">
+				<label for="formGroupExampleInput">Title:</label>
+				<input type="text" class="form-control" id="formGroupExampleInput" placeholder="(Optional)" name="title">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlTextarea1">Discription:</label>
+				<textarea class="form-control" id="exampleFormControlTextarea1" name="body"></textarea>
+			</div>
+			<div class="mt-5">
+				<button type="submit" class="btn btn-light btn-lg" >Post</button>
+				<button type="Reset" class="btn btn-light btn-lg" >Reset</button>
+			</div>
+		</form>
+	</div>
+</div>
+</body>
